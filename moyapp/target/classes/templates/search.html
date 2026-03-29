@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Search Entries</title>
+</head>
+<body>
+
+<h2>Search by Name</h2>
+<form action="/search/name" method="get">
+    <input type="text" name="name" placeholder="Enter name">
+    <button type="submit">Search</button>
+</form>
+
+<h2>Search by Village</h2>
+<form action="/search/village" method="get">
+    <input type="text" name="village" placeholder="Enter village">
+    <button type="submit">Search</button>
+</form>
+
+<hr>
+
+<h2>Results</h2>
+
+<table border="1">
+    <tr>
+        <th>Name</th>
+        <th>Village</th>
+        <th>Amount</th>
+        <th>Function</th>
+    </tr>
+
+    <tr th:each="entry : ${entries}">
+        <td th:text="${entry.name}"></td>
+        <td th:text="${entry.village}"></td>
+        <td th:text="${entry.amount}"></td>
+        <td th:text="${entry.functionName}"></td>
+    </tr>
+
+    <a href="/export">
+        <button>Download Excel</button>
+    </a>
+
+</table>
+
+</body>
+</html>
